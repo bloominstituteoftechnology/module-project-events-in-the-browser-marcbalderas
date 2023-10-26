@@ -108,8 +108,24 @@ function moduleProject2() {
         mosquito.dataset.status = 'dead'
         mosquito.parentElement.style.backgroundColor = 'red'
       }
+      // 👉 TASK 5 - End the game 👈
+
+      let liveMosquitoes = document.querySelectorAll('[data-status=alive]')
+      if (!liveMosquitoes.length) {
+        let elapsed = getTimeElapsed()
+        document.querySelector('p.info').textContent =
+        `Extermination completed in ${elapsed / 1000} seconds!`
+
+        let restartBtn = document.createElement('button')
+        restartBtn.textContent = 'Restart'
+        restartBtn.addEventListener('click', () => {
+          location.reload()
+        })
+        document.querySelector('h2').insertAdjacentElement('beforeend', restartBtn)
+        restartBtn.focus()
+      }
     }
-    // 👉 TASK 5 - End the game 👈
+    
   })
   // 👆 WORK WORK ABOVE THIS LINE 👆
 }
